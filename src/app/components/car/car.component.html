@@ -12,7 +12,8 @@
             <th>BrandName</th>
             <th>ColorName</th> 
             <th>ModelYear</th> 
-            <th>Description</th>
+            <th>DailyPrice</th>
+            <th>Detay</th>
         </tr>
     </thead>
     <tr *ngFor="let car of cars">
@@ -21,5 +22,6 @@
         <td>{{car.colorName }}</td>
         <td>{{car.modelYear }}</td>
         <td>{{car.dailyPrice }}</td>
+        <td><button type="button" class="btn btn-primary" routerLink="/carImage/{{car.carId}}">Detaya Git</button></td>
     </tr>
 </table>
