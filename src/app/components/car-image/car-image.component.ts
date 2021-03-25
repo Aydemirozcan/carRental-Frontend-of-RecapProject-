@@ -14,6 +14,7 @@ export class CarImageComponent implements OnInit {
   carImages: CarImage[] = [];
   cardetail: CarDetail;
   currentCarImage: CarImage;
+  defaultImage:string = "/images/default.jpg"
 
   constructor(
     private carImageService: CarImageService,
@@ -23,26 +24,24 @@ export class CarImageComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
+     
+ 
       if (params['carId']) {
-        this.getImagesByCar(params['carId']);
         this.getCarDetail(params['carId']);
       } else {
       }
     });
   }
 
-  getImagesByCar(carId: number) {
-    this.carImageService.getImagesByCar(carId).subscribe((response) => {
-      this.carImages = response.data;
-    });
-  }
-  getCarDetail(carId: number) {
+
+getCarDetail(carId: number) {
     this.carDetailService.getCarDetailByCarId(carId).subscribe((response) => {
       this.cardetail = response.data;
+      console.log(this.cardetail);
     });
   }
 
-  setCurrentCarImage(carImage: CarImage) {
+ setCurrentCarImage(carImage: CarImage) {
     this.currentCarImage = carImage;
   }
 }

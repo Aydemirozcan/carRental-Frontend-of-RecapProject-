@@ -4,9 +4,18 @@
   data-bs-ride="carousel"
 >
   <div class="carousel-inner">
-    <div class="carousel-item active" *ngFor="let image of carImages; first as isFirst;" [class.active]="isFirst">
+    
+    <div *ngIf="cardetail?.imagePath?.length === 0" class="carousel-item active" [class.active]="true">   
       <img
-        src="https://localhost:44304{{image.imagePath}}" 
+        src="https://localhost:44304{{defaultImage}}" 
+        class="d-block w-100"
+        alt="ImagePath"
+      />
+    </div>
+    
+    <div  class="carousel-item active" *ngFor="let image of cardetail?.imagePath; first as isFirst;" [class.active]="isFirst">
+      <img
+        src="https://localhost:44304{{image}}" 
         class="d-block w-100"
         alt="ImagePath"
       />
